@@ -2,6 +2,10 @@ node_modules
 dist
 dist-ssr
 *.local
-.env.local
 .DS_Store
 *.log
+
+# Local secrets — never commit. Only .env.example (placeholders) is tracked.
+.env
+.env.*
+!.env.example

@@ -19,27 +19,27 @@ npm run dev
 Without `.env.local`, everything works except the Go Pro button, which shows
 "Launching soon" — fine for an early public preview.
 
-## Deploy (GitHub Pages + otherimpact.com)
+## Deploy (Vercel + otherimpact.com)
 
-Same pattern as the app repo:
+Deployed on Vercel (same host as the app repo), so both projects share one
+deploy model and DNS setup. Vercel auto-detects Vite and handles SPA routing
+via `vercel.json`.
 
-1. Push this repo to `main`.
-2. Repo **Settings → Pages** → Source: **GitHub Actions**.
-3. Repo **Settings → Secrets and variables → Actions**: add
-   `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` — same values as the
-   otherimpact (app) repo's secrets, since both hit the same Supabase project.
-4. DNS at your registrar (root domain — `public/CNAME` is already
-   `otherimpact.com`):
-   - Apex `@`: A records → `185.199.108.153`, `185.199.109.153`,
-     `185.199.110.153`, `185.199.111.153`
-   - `www`: CNAME → `YOUR-GITHUB-USERNAME.github.io`
-5. Repo **Settings → Pages** → Custom domain: `otherimpact.com`, then tick
-   **Enforce HTTPS** once the certificate is issued.
-6. Separately, on the **app** repo: same steps but its custom domain is
-   `app.otherimpact.com`, with DNS being a single CNAME record:
-   `app` → `YOUR-GITHUB-USERNAME.github.io`.
+1. At [vercel.com](https://vercel.com), sign in with GitHub and **Add New →
+   Project**, import `acalistudios/OtherImpact-website`. Framework preset:
+   Vite (auto-detected).
+2. **Settings → Environment Variables**: add `VITE_SUPABASE_URL` and
+   `VITE_SUPABASE_ANON_KEY` — same values as the otherimpact (app) repo, since
+   both hit the same Supabase project. (Only the Pricing checkout button needs
+   them; the rest of the site is static.)
+3. **Settings → Domains**: add both `otherimpact.com` **and** `www.otherimpact.com`
+   (Vercel will offer to redirect www → apex). Vercel shows the exact DNS
+   records to add at your registrar — typically an `A` record for the apex
+   (`76.76.21.21`) and a `CNAME` for `www` (`cname.vercel-dns.com`). SSL is
+   automatic.
 
-Both repos can go live independently and in either order.
+The **app** repo deploys the same way, with domain `app.otherimpact.com`
+(a single `CNAME` for `app`). Both can go live independently, in either order.
 
 ## Keeping content in sync
 
