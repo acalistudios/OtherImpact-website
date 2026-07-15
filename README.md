@@ -19,27 +19,24 @@ npm run dev
 Without `.env.local`, everything works except the Go Pro button, which shows
 "Launching soon" — fine for an early public preview.
 
-## Deploy (Vercel + otherimpact.com)
+## Deploy (Cloudflare Pages + otherimpact.com)
 
-Deployed on Vercel (same host as the app repo), so both projects share one
-deploy model and DNS setup. Vercel auto-detects Vite and handles SPA routing
-via `vercel.json`.
+Deployed on **Cloudflare Pages** (same host as the app repo) — free for
+commercial use, one deploy model for both sites. SPA routing via
+`public/_redirects`; Node pinned via `.nvmrc`.
 
-1. At [vercel.com](https://vercel.com), sign in with GitHub and **Add New →
-   Project**, import `acalistudios/OtherImpact-website`. Framework preset:
-   Vite (auto-detected).
-2. **Settings → Environment Variables**: add `VITE_SUPABASE_URL` and
-   `VITE_SUPABASE_ANON_KEY` — same values as the otherimpact (app) repo, since
-   both hit the same Supabase project. (Only the Pricing checkout button needs
-   them; the rest of the site is static.)
-3. **Settings → Domains**: add both `otherimpact.com` **and** `www.otherimpact.com`
-   (Vercel will offer to redirect www → apex). Vercel shows the exact DNS
-   records to add at your registrar — typically an `A` record for the apex
-   (`76.76.21.21`) and a `CNAME` for `www` (`cname.vercel-dns.com`). SSL is
-   automatic.
+1. (Once, shared with the app repo) add `otherimpact.com` to Cloudflare and
+   point GoDaddy nameservers at Cloudflare — see the app repo's README step 1.
+2. Cloudflare → **Workers & Pages → Create → Pages → Connect to Git**, select
+   **OtherImpact-website**. Build: framework Vite, `npm run build`, output `dist`.
+3. **Settings → Environment variables**: add `VITE_SUPABASE_URL` and
+   `VITE_SUPABASE_ANON_KEY` — same values as the app repo (same Supabase
+   project). Only the Pricing checkout button uses them; the rest is static.
+4. **Custom domains** → add `otherimpact.com` **and** `www.otherimpact.com`.
+   DNS records + SSL are created automatically since the domain is on Cloudflare.
 
-The **app** repo deploys the same way, with domain `app.otherimpact.com`
-(a single `CNAME` for `app`). Both can go live independently, in either order.
+The **app** repo deploys the same way with domain `app.otherimpact.com`. Both
+can go live independently, in either order.
 
 ## Keeping content in sync
 
