@@ -9,3 +9,16 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Belt-and-suspenders: refuse to commit key/secret files even if one lands in
+# this repo by accident. This repo is PUBLIC, so this matters doubly. Real
+# secrets live OUTSIDE it, in the "OtherImpact Private" folder (not a git repo).
+*key*.txt
+*secret*.txt
+*token*.txt
+*password*.txt
+credentials*
+*.pem
+*.key
+*.p12
+*.pfx
