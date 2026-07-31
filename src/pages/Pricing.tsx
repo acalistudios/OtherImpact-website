@@ -17,7 +17,7 @@ export default function Pricing() {
       <div className="page-head">
         <h1>Pricing</h1>
         <p className="lede">
-          The track record is free — judging us costs nothing, ever. Premium buys{' '}
+          The complete idea history is free — judging us costs nothing, ever. Premium buys{' '}
           <em>speed and breadth</em>: every event, every idea, the moment it publishes.
         </p>
       </div>
@@ -29,7 +29,7 @@ export default function Pricing() {
           <ul>
             <li>The top 3 events each day, with full effect chains</li>
             <li>New ideas unlock 12 hours after the desk publishes them</li>
-            <li>The complete, unedited scoreboard — always free, never delayed</li>
+            <li>The complete, unedited idea history — always free, never delayed</li>
             <li>All closed ideas with full theses (the public record)</li>
             <li>Instrument pages with live charts</li>
           </ul>
@@ -45,10 +45,10 @@ export default function Pricing() {
           </div>
           <ul>
             <li><strong>Every event</strong> — not just the day's top 3</li>
-            <li><strong>Real time</strong> — ideas the moment they publish, no 12-hour delay</li>
+            <li><strong>Immediate access</strong> — ideas the moment they publish, no 12-hour delay</li>
             <li>
               <strong>Analyst chat</strong> — bounce your own ideas off the desk;
-              it argues from its published research and track record
+              it argues from its published research and idea history
             </li>
             <li><strong>Breaking-event alerts</strong> — by email or text, your choice, off anytime</li>
             <li><strong>Watchlist</strong> — follow symbols and get desk coverage first</li>

@@ -13,8 +13,8 @@ export default function Home() {
           An AI research desk that reads everything and publishes theses as{' '}
           <strong>effect chains</strong> — the first-order move everyone sees, and the
           second- and third-order effects they don't. Every thesis states what would
-          kill it. Every idea is scored on a public, unedited{' '}
-          <a href={`${APP_URL}/scoreboard`}>track record</a>.
+          kill it. Every published idea remains visible in a public, unedited{' '}
+          <a href={`${APP_URL}/scoreboard`}>idea history</a>.
         </p>
         <div className="hero-ctas">
           <a href={APP_URL} className="cta">Browse the research</a>
@@ -38,11 +38,11 @@ export default function Home() {
       </div>
 
       <section className="home-section">
-        <h2>A public, unedited track record</h2>
+        <h2>A public, unedited idea history</h2>
         <p className="lede">
-          Every idea is scored from publication to close — horizon reached or thesis
-          invalidated, whichever comes first. Closed ideas are never hidden or removed,
-          free or paid. That's the entire credibility model.
+          Every idea remains visible from publication through closure, invalidation,
+          or supersession. Closed ideas are never hidden or removed, free or paid.
+          Numerical scoring will return only with a licensed market-data source.
         </p>
         <p><Link to="/pricing">See plans →</Link></p>
       </section>

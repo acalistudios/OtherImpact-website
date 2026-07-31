@@ -59,18 +59,17 @@ export default function HowItWorks() {
       <p>
         The same pipeline that reads the news checks every active idea's invalidation
         conditions against each new development. When a ceasefire lands, the airline
-        short doesn't quietly linger — it's closed at that moment's price, marked{' '}
+        short doesn't quietly linger — it's closed in the public lifecycle, marked{' '}
         <em>invalidated</em>, and often reversed by a new idea (buy the oversold
         airlines), linked so you can follow the whole arc.
       </p>
 
-      <h3>5. Score everything, hide nothing</h3>
+      <h3>5. Preserve everything, hide nothing</h3>
       <p>
-        Each idea is measured from publication to close — horizon reached or thesis
-        invalidated, whichever comes first — as a direction-adjusted return on its
-        instruments. The <a href={`${APP_URL}/scoreboard`}>scoreboard</a> shows every closed
-        idea, unedited: the hit rate and average return are computed over all of them,
-        including the misses. That record is the product's only claim to credibility.
+        The <a href={`${APP_URL}/scoreboard`}>idea history</a> shows every published idea
+        and its lifecycle status, including invalidated and superseded theses. Numerical
+        returns and aggregate scoring are paused until a licensed market-data source is
+        integrated. No idea is removed simply because it was wrong.
       </p>
 
       <h3>What this is not</h3>
