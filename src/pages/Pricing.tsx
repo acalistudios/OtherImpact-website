@@ -1,51 +1,13 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { demoMode, invokeFunction } from '../lib/api';
-import { supabase } from '../lib/supabase';
 import { usePageTitle } from '../lib/usePageTitle';
 import { APP_URL } from '../lib/urls';
 
 // Free tier = all published research (the public track record IS the marketing).
-// Premium = speed and breadth. The Pro button is fully wired: it starts a
-// Stripe Checkout the moment STRIPE_SECRET_KEY/STRIPE_PRICE_ID are configured;
-// until then the stripe-checkout function answers 503 and we show its message.
-// Both this site and the app repo point at the same Supabase project, so
-// checkout works from here without needing to be on the app subdomain.
+// Premium = speed and breadth. Authentication lives on app.otherimpact.com;
+// browser sessions do not cross from the marketing origin to that subdomain.
+// Send the reader to the app account page, which signs them in before checkout.
 function GoProButton() {
-  const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState('');
-
-  async function goPro() {
-    if (demoMode) return;
-    setBusy(true);
-    setNotice('');
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        // Sign-in (magic link) lives on the app's chat page; this is a
-        // cross-domain redirect, not a client-side route. After signing in,
-        // come back here to finish checkout.
-        window.location.href = `${APP_URL}/chat`;
-        return;
-      }
-      const data = await invokeFunction<{ url: string }>('stripe-checkout', {});
-      window.location.href = data.url;
-    } catch (e) {
-      setNotice(e instanceof Error ? e.message : 'Payments are not enabled yet.');
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  return (
-    <>
-      <button className="cta" disabled={demoMode || busy} onClick={goPro}
-        title={demoMode ? 'Available once the backend is live' : undefined}>
-        {demoMode ? 'Launching soon' : busy ? 'Opening checkout…' : 'Go Pro — $9/mo'}
-      </button>
-      {notice && <p className="muted small">{notice}</p>}
-    </>
-  );
+  return <a className="cta" href={`${APP_URL}/account?checkout=1`}>Go Pro — $9/mo</a>;
 }
 
 export default function Pricing() {
@@ -88,8 +50,8 @@ export default function Pricing() {
               <strong>Analyst chat</strong> — bounce your own ideas off the desk;
               it argues from its published research and track record
             </li>
-            <li><strong>Breaking-event alerts</strong> — by email or text, your choice, off anytime <span className="soon">coming</span></li>
-            <li><strong>Watchlist</strong> — follow symbols and get desk coverage first <span className="soon">coming</span></li>
+            <li><strong>Breaking-event alerts</strong> — by email or text, your choice, off anytime</li>
+            <li><strong>Watchlist</strong> — follow symbols and get desk coverage first</li>
           </ul>
           <GoProButton />
           <p className="muted small">
