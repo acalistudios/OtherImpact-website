@@ -50,12 +50,13 @@ export default function Pricing() {
               <strong>Analyst chat</strong> — bounce your own ideas off the desk;
               it argues from its published research and idea history
             </li>
-            <li><strong>Breaking-event alerts</strong> — by email or text, your choice, off anytime</li>
-            <li><strong>Watchlist</strong> — follow symbols and get desk coverage first</li>
+            <li><strong>Strategy portfolios</strong> — organize ideas into your own tracked strategies</li>
+            <li><strong>Email breaking-event alerts</strong> — optional and switchable off anytime</li>
+            <li><strong>Watchlist-filtered alerts</strong> — only notify you about symbols you follow</li>
           </ul>
           <GoProButton />
           <p className="muted small">
-            Founding pricing locks in for early subscribers when payments open.
+            Founding pricing locks in for early subscribers.
           </p>
         </div>
       </div>
