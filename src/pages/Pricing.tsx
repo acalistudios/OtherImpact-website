@@ -2,14 +2,6 @@ import { Link } from 'react-router-dom';
 import { usePageTitle } from '../lib/usePageTitle';
 import { APP_URL } from '../lib/urls';
 
-// Free tier = all published research (the public track record IS the marketing).
-// Premium = speed and breadth. Authentication lives on app.otherimpact.com;
-// browser sessions do not cross from the marketing origin to that subdomain.
-// Send the reader to the app account page, which signs them in before checkout.
-function GoProButton() {
-  return <a className="cta" href={`${APP_URL}/account?checkout=1`}>Go Pro — $9/mo</a>;
-}
-
 export default function Pricing() {
   usePageTitle('Pricing');
   return (
@@ -17,8 +9,8 @@ export default function Pricing() {
       <div className="page-head">
         <h1>Pricing</h1>
         <p className="lede">
-          The complete idea history is free — judging us costs nothing, ever. Premium buys{' '}
-          <em>speed and breadth</em>: every event, every idea, the moment it publishes.
+          OtherImpact is currently available as a free public beta. Browse the research,
+          follow the complete idea history, and help us refine the desk before paid plans launch.
         </p>
       </div>
 
@@ -37,8 +29,8 @@ export default function Pricing() {
         </div>
 
         <div className="price-card featured">
-          <div className="founding">Founding price</div>
-          <h3>Pro</h3>
+          <div className="founding">After the beta</div>
+          <h3>Pro preview</h3>
           <div className="price">
             <span className="price-num">$9</span>
             <span className="price-per">/month</span>
@@ -54,16 +46,16 @@ export default function Pricing() {
             <li><strong>Email breaking-event alerts</strong> — optional and switchable off anytime</li>
             <li><strong>Watchlist-filtered alerts</strong> — only notify you about symbols you follow</li>
           </ul>
-          <GoProButton />
+          <a className="cta secondary" href={APP_URL}>Use the free beta</a>
           <p className="muted small">
-            Founding pricing locks in for early subscribers.
+            Pro subscriptions are not open yet. No payment will be requested during the beta.
           </p>
         </div>
       </div>
 
       <p className="muted small pricing-note">
-        OtherImpact is research and education, not investment advice — free or paid.
-        Subscribing buys you tools, not recommendations. See <Link to="/terms">Terms</Link>.
+        OtherImpact is research and education, not investment advice. Future subscriptions
+        will buy tools and earlier access, not recommendations. See <Link to="/terms">Terms</Link>.
       </p>
     </div>
   );
